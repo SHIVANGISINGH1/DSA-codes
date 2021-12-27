@@ -1,3 +1,4 @@
+// in this we have to implement the stack behaviour using the array
 #include <iostream>
 #include <exception>
 using namespace std;
@@ -5,9 +6,9 @@ using namespace std;
 class Stack {
 
 public:
-  int* arr;
-  int tos;
-  int MaxCapacity;
+	int* arr;
+	int tos;
+	int MaxCapacity;
 
 public:
   Stack(int size) {
@@ -28,46 +29,43 @@ public:
 
 public:
   void push(int data) {
-    
       
-      if (tos == MaxCapacity-1) {
-        cout << "Stack overflow" << endl;
-        return ;
-      }
-      else {
-        tos +=1; 
-        arr[tos] = data;
-      }
-  }
+	if (tos == MaxCapacity-1) {
+		cout << "Stack overflow" << endl;
+		return ;
+	}
+	else {
+		tos +=1;
+		arr[tos] = data;
+	}
+}
 
 public:
-  int top()
-  {
+int top() {
+
     if (tos == -1) {
       cout << "Stack underflow" << endl;
       return -1;
     }
     else
     return arr[tos]; 
-  }
+}
 
 public:
-  int pop()
-  {
-    if (tos == -1) {
-      cout << "Stack underflow";
-      return -1;
-    }
-    else {
-      int y =  arr[tos];
-      tos-=1 ;
-      return y;
-    }
-  }
+int pop() {
+	if (tos == -1) {
+		cout << "Stack underflow";
+		return -1;
+	}
+	else {
+		int y =  arr[tos];
+		tos-=1 ;
+		return y;
+	}
+}
 
 public:
   void display() {
-    
 
     int size = MaxCapacity;
 
@@ -79,33 +77,34 @@ public:
 };
 
 int main() {
-  int n;
-  cin >> n;
-  Stack st(n);
-  string str;
-  cin >> str;
+	int n;
+	cin >> n;
 
-  while (str != "quit") {
-    if (str == "push") {
-      int val;
-      cin >> val;
-      st.push(val);
-    } else if (str == "pop") {
-      int val = st.pop();
-      if (val != -1) {
-        cout << val << endl;
-      }
-    } else if (str == "top") {
-      int val = st.top();
-      if (val != -1) {
-        cout << val << endl;
-      }
+	Stack st(n);
+	string str;
+	cin >> str;
 
-    } else if (str == "size") {
-      cout << st.size() << endl;
-    } else if (str == "display") {
-      st.display();
-    }
-    cin >> str;
-  }
+	while (str != "quit") {
+	if (str == "push") {
+		int val;
+		cin >> val;
+		st.push(val);
+	} else if (str == "pop") {
+		int val = st.pop();
+		if (val != -1) {
+		cout << val << endl;
+		}
+	} else if (str == "top") {
+		int val = st.top();
+		if (val != -1) {
+		cout << val << endl;
+		}
+
+	} else if (str == "size") {
+		cout << st.size() << endl;
+	} else if (str == "display") {
+		st.display();
+	}
+	cin >> str;
+	}
 }
