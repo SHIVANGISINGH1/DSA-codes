@@ -1,3 +1,8 @@
+// Similar to keyboard pattern, here we need to just tell the count of the combinations
+// because we only have two digits numbers we will check for i-2 and i-1
+// we will make the pattern by checking the values at i-1 and i // 4cases 0,0 !0,0 0,!0 !0,!0 
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -12,27 +17,24 @@ int printEncodings(string inp) {
     for (int idx=1; idx<size; idx++) {
     string str = inp.substr(idx-1,2);
 
-    if(inp[idx] == '0') {
-        if(idx+1<size && inp[idx+1] == '0') return 0;
-     
-        int s = stoi(str);
-       
-        if(s<=26) {
-            dp[idx] = 1;
-        }else {
+    if (inp[idx-1] == '0' && inp[idx] == '0') {
+        dp[idx] = 0;
+    }
+    else if(inp[idx-1] == '0' && inp[idx] != '0') {
+        dp[idx] = dp[idx-1];
+    }
+    else if(inp[idx-1] != '0' && inp[idx] == '0') {
+        if (inp[idx-1] == '1' || inp[idx-1] == '2') {
+            dp[idx] = idx>=2 ? dp[idx-2] : 1;
+        }
+        else {
             dp[idx] = 0;
-            return 0;
         }
-        
-        if(idx+1<size && inp[idx+1] != '0') {
-            dp[idx+1] = dp[idx];
-            idx+=1;
-        }
-    }   
+    }
     else  {
         int val = stoi(str);
         if (val <= 26) {
-            dp[idx] = dp[idx-1] + 1;//3
+            dp[idx] = idx>=2 ? dp[idx-1] + dp[idx-2] : dp[idx-1] + 1;
         }
         else {
             dp[idx] = dp[idx-1];
