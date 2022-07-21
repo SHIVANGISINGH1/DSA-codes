@@ -6,7 +6,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 int printEncodings(string inp) {
 
     int size = inp.size();
@@ -54,4 +53,6 @@ int main() {
     cin >> inp;
    
     cout << printEncodings(inp);
+
+    return 0;
 }
