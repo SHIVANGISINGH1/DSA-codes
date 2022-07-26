@@ -1,4 +1,8 @@
 // Memoized solution
+// Recursive memoized solution
+// Time Complexity: O(N + K) : N = Number of elements in array to make a hashmap 
+// K = value of maxElement from array [K times your recursive loop will run]
+// Space Complexity: O(N + K) // we are storing in one array and one map K=number of unique elements
 #include<iostream>
 #include<vector>
 #include<unordered_map>
